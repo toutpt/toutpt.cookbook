@@ -11,6 +11,7 @@ Table des matières:
 .. toctree::
    :maxdepth: 2
 
+   install
    component
    browserview
    test

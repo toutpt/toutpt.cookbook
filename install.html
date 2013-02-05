@@ -9,7 +9,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Comment réaliser une vue &mdash; Mon cook book Plone 0.1 documentation</title>
+    <title>Installer les outils &mdash; Mon cook book Plone 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -31,8 +31,8 @@
     <script type="text/javascript" src="_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="_static/cloud.js"></script>
     <link rel="top" title="Mon cook book Plone 0.1 documentation" href="index.html" />
-    <link rel="next" title="Comment écrire des tests" href="test.html" />
-    <link rel="prev" title="Comment écrire des componsants zope" href="component.html" /> 
+    <link rel="next" title="Comment écrire des componsants zope" href="component.html" />
+    <link rel="prev" title="Bienvenue sur mon cook book Plone" href="index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -45,10 +45,10 @@
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="test.html" title="Comment écrire des tests"
+          <a href="component.html" title="Comment écrire des componsants zope"
              accesskey="N">suivant</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="component.html" title="Comment écrire des componsants zope"
+          <a href="index.html" title="Bienvenue sur mon cook book Plone"
              accesskey="P">précédent</a> &nbsp; &nbsp;</li>
     <li><a href="index.html">Mon cook book Plone 0.1 documentation</a> &raquo;</li>
  
@@ -62,30 +62,39 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="comment-realiser-une-vue">
-<h1>Comment réaliser une vue<a class="headerlink" href="#comment-realiser-une-vue" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Anglais: browser view, browser page</p>
-<p>packages:</p>
-<ul class="simple">
-<li>Zope2</li>
-<li>Products.Five</li>
-<li>niveau: débutant</li>
-<li>audience: intégrateur</li>
-</ul>
-<div class="section" id="definitions">
-<h2>Définitions<a class="headerlink" href="#definitions" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Une <em>vue</em> est un composant qui prend en entré une <em>contexte</em> et une <em>requête</em>
-et qui fourni la méthode __call__. Cette méthode est responsable de renvoyer un
-résultat au format HTML qui sera insérer dans l&#8217;objet &#8216;response&#8217; par le serveur
-Zope.</p>
-<dl class="docutils">
-<dt>Par défaut vous avez à disposition le moteur de template ZPT</dt>
-<dd>(Zope Page Tempalte)</dd>
-</dl>
+  <div class="section" id="installer-les-outils">
+<h1>Installer les outils<a class="headerlink" href="#installer-les-outils" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="plone">
+<h2>Plone<a class="headerlink" href="#plone" title="Lien permanent vers ce titre">¶</a></h2>
+<p>il y a deux manières d&#8217;installer Plone:</p>
+<p>Vous pouvez télécharger et installer Plone à l&#8217;aide d&#8217;une archive
+à cette adresse: <a class="reference external" href="http://plone.org/products/plone">http://plone.org/products/plone</a>. C&#8217;est la méthode si vous
+souhaitez juste essayer Plone.</p>
+<p>Pour les développeurs: Vous devez mettre à disposition un python 2.7
+avec les sources et utiliser la mécanique de déploiement buildout.</p>
+<p>Dans la pratique un développeur fourni un buildout à la racine de ses modules
+qui permet d&#8217;installer un Plone vierge avec juste le module en question via
+les commandes suivantes:</p>
+<div class="highlight-python"><pre>python bootstrap.py
+bin/buildout</pre>
 </div>
-<div class="section" id="exemple">
-<h2>Exemple<a class="headerlink" href="#exemple" title="Lien permanent vers ce titre">¶</a></h2>
-<p>TODO: pousser un exemple sur github</p>
+</div>
+<div class="section" id="les-outils">
+<h2>Les outils<a class="headerlink" href="#les-outils" title="Lien permanent vers ce titre">¶</a></h2>
+<p>La bonne pratique c&#8217;est d&#8217;avoir sa boite à outil dans un dossier séparé et non
+pas demandé à chaque petit buildout d&#8217;installer tous les outils du monde.</p>
+<p>Vous avez pour cela un buildout disponible ici: <a class="reference external" href="http://github.com/toutpt/mypythontools">http://github.com/toutpt/mypythontools</a></p>
+<blockquote>
+<div>git clone <a class="reference external" href="http://github.com/toutpt/mypythontools">http://github.com/toutpt/mypythontools</a> plonetools
+cd plonetools
+python bootstrap.py
+bin/buildout</div></blockquote>
+<p>Vous avez la dedans:</p>
+<ul class="simple">
+<li>un outil de traduction</li>
+<li>un générateur de module</li>
+<li>un générateur de thème</li>
+</ul>
 </div>
 </div>
 
@@ -101,23 +110,23 @@ Zope.</p>
   <div class="sphinxlocaltoc">
   <h3><a href="index.html">Table des matières</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Comment réaliser une vue</a><ul>
-<li><a class="reference internal" href="#definitions">Définitions</a></li>
-<li><a class="reference internal" href="#exemple">Exemple</a></li>
+<li><a class="reference internal" href="#">Installer les outils</a><ul>
+<li><a class="reference internal" href="#plone">Plone</a></li>
+<li><a class="reference internal" href="#les-outils">Les outils</a></li>
 </ul>
 </li>
 </ul>
 
   </div>
   <h4>Sujet précédent</h4>
-  <p class="topless"><a href="component.html"
-                        title="Chapitre précédent">Comment écrire des componsants zope</a></p>
+  <p class="topless"><a href="index.html"
+                        title="Chapitre précédent">Bienvenue sur mon cook book Plone</a></p>
   <h4>Sujet suivant</h4>
-  <p class="topless"><a href="test.html"
-                        title="Chapitre suivant">Comment écrire des tests</a></p>
+  <p class="topless"><a href="component.html"
+                        title="Chapitre suivant">Comment écrire des componsants zope</a></p>
   <h3>Cette page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/browserview.txt"
+    <li><a href="_sources/install.txt"
            rel="nofollow">Montrer la source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -146,10 +155,10 @@ Zope.</p>
           <a href="genindex.html" title="Index général"
              >index</a></li>
         <li class="right" >
-          <a href="test.html" title="Comment écrire des tests"
+          <a href="component.html" title="Comment écrire des componsants zope"
              >suivant</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="component.html" title="Comment écrire des componsants zope"
+          <a href="index.html" title="Bienvenue sur mon cook book Plone"
              >précédent</a> &nbsp; &nbsp;</li>
     <li><a href="index.html">Mon cook book Plone 0.1 documentation</a> &raquo;</li>
  

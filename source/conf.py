@@ -38,7 +38,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'My Plone cook book'
+project = u'Mon cook book Plone'
 copyright = u'2013, Jean-Michel FRANCOIS'
 
 # The version info for the project you're documenting, acts as replacement for

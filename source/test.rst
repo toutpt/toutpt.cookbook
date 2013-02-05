@@ -34,7 +34,10 @@ Définitions
 Exemples
 --------
 
+Voici une série de modules qui ont des tests et que vous trouverez sur github:
 
-Théorie
--------
+* collective.categories
+* collective.oembed
+* collective.gallery
+* collective.sugarcrm
 

@@ -92,4 +92,3 @@ utilisation:
 
     password = component.getUtility(interfaces.IPasswordEncryption)
     crypted = password.crypt('mon mot de passe')
-
