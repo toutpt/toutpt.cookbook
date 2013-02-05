@@ -1,9 +1,8 @@
 .project
 .pydev-project
-build
+#build
 .installed.cfg
 .project
 .pydevproject
 .settings
 bin
-build
