@@ -101,15 +101,54 @@ entrée fournissant euh même des interfaces définies</p>
 </li>
 </ul>
 </div>
-<div class="section" id="exemples">
-<h2>Exemples<a class="headerlink" href="#exemples" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Todo ajouter des exemples pour chaque type de componsant</p>
-</div>
 <div class="section" id="theorie">
 <h2>Théorie<a class="headerlink" href="#theorie" title="Lien permanent vers ce titre">¶</a></h2>
 <p>La théorie des composants s&#8217;inspire du monde de l&#8217;électronique. Un composant
 défini comme entrée X et fourni comme sortie Y. La programmation par componsant
 est donc un sous ensemble de la programmation orientée objet.</p>
+</div>
+<div class="section" id="pratique">
+<h2>Pratique<a class="headerlink" href="#pratique" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le componsant est donc ni plus ni moins qu&#8217;un objet python. Celui ci peux donc
+hériter de classes existantes ou non.</p>
+<p>Dans Zope il y a un registre de componsant globale au près du quel vous devez
+enregistrer votre componsant. Pour ce faire vous devez utiliser un fichier
+<em>zcml</em>. Il faut voir ce registre comme une grosse structure de donnée en mémoire
+à qui vous pouvez dire:</p>
+<div class="highlight-python"><pre>je veux le componsant qui fourni l'interface IVoiture en sortie et qui prend
+l'instance 'conducteur'.</pre>
+</div>
+<p>Le registre va donc regarder quels sont les interfaces implémentées par les
+instance en entrée et fournir une instance d&#8217;un composant en sortie.</p>
+</div>
+<div class="section" id="exemple-utility">
+<h2>Exemple: utility<a class="headerlink" href="#exemple-utility" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Cet exemple est issue du module collective.sugarcrm</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
+<span class="kn">from</span> <span class="nn">zope</span> <span class="kn">import</span> <span class="n">interface</span>
+
+<span class="k">class</span> <span class="nc">IPasswordEncryption</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">Interface</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utility to crypt your password before use it with the WebService&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">crypt</span><span class="p">(</span><span class="n">password</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the encrypted password for the current service&quot;&quot;&quot;</span>
+
+<span class="k">class</span> <span class="nc">Password</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Password default encryption for sugarcrm&quot;&quot;&quot;</span>
+    <span class="n">interface</span><span class="o">.</span><span class="n">implements</span><span class="p">(</span><span class="n">IPasswordEncryption</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">crypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">md5</span><span class="p">()</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;utility</span>
+    <span class="na">factory=</span><span class="s">&quot;.password.Password&quot;</span>
+    <span class="na">provides=</span><span class="s">&quot;.interfaces.IPasswordEncryption&quot;</span>
+    <span class="nt">/&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -127,8 +166,9 @@ est donc un sous ensemble de la programmation orientée objet.</p>
   <ul>
 <li><a class="reference internal" href="#">Comment écrire des componsants zope</a><ul>
 <li><a class="reference internal" href="#definitions">Définitions</a></li>
-<li><a class="reference internal" href="#exemples">Exemples</a></li>
 <li><a class="reference internal" href="#theorie">Théorie</a></li>
+<li><a class="reference internal" href="#pratique">Pratique</a></li>
+<li><a class="reference internal" href="#exemple-utility">Exemple: utility</a></li>
 </ul>
 </li>
 </ul>
