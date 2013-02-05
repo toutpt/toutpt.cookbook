@@ -9,7 +9,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Bienvenue sur mon cook book Plone &mdash; Mon cook book Plone 0.1 documentation</title>
+    <title>Tout sur les profiles d’installation &mdash; Mon cook book Plone 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -30,8 +30,7 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="_static/cloud.js"></script>
-    <link rel="top" title="Mon cook book Plone 0.1 documentation" href="#" />
-    <link rel="next" title="Installer les outils" href="install.html" /> 
+    <link rel="top" title="Mon cook book Plone 0.1 documentation" href="index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -43,10 +42,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="install.html" title="Installer les outils"
-             accesskey="N">suivant</a> &nbsp; &nbsp;</li>
-    <li><a href="#">Mon cook book Plone 0.1 documentation</a> &raquo;</li>
+    <li><a href="index.html">Mon cook book Plone 0.1 documentation</a> &raquo;</li>
  
       </ul>
     </div>
@@ -58,34 +54,44 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="bienvenue-sur-mon-cook-book-plone">
-<h1>Bienvenue sur mon cook book Plone<a class="headerlink" href="#bienvenue-sur-mon-cook-book-plone" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Table des matières:</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="tout-sur-les-profiles-d-installation">
+<h1>Tout sur les profiles d&#8217;installation<a class="headerlink" href="#tout-sur-les-profiles-d-installation" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Problème: mon module n&#8217;installe pas tout ce qu&#8217;il faut j&#8217;ai beau modifier les
+fichiers xml rien n&#8217;y fait.</p>
+<div class="section" id="definitions">
+<h2>Définitions<a class="headerlink" href="#definitions" title="Lien permanent vers ce titre">¶</a></h2>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installer les outils</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#plone">Plone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#configurer-buildout">Configurer buildout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#les-outils">Les outils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#generer-un-module">Générer un module</a></li>
-</ul>
+<li><dl class="first docutils">
+<dt>profile (profil):</dt>
+<dd><p class="first last">Il s&#8217;agit d&#8217;une configuration précise des paramètres persistents. Un
+profile qui est appliqué c&#8217;est une configuration qui est modifiée.
+Un profile dispose d&#8217;une version et de dépendances qui sont définit par le
+fichier metadata.xml. Par convention vous trouverez les profiles d&#8217;un
+module dans le dossier profiles et le profile par défaut s&#8217;appel default.</p>
+</dd>
+</dl>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="component.html">Comment écrire des componsants zope</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="component.html#definitions">Définitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="component.html#theorie">Théorie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="component.html#pratique">Pratique</a></li>
-<li class="toctree-l2"><a class="reference internal" href="component.html#exemple-utility">Exemple: utility</a></li>
-</ul>
+<li><dl class="first docutils">
+<dt>(import step):</dt>
+<dd><p class="first last">Une import step est une étape qui est responsable de la gestion d&#8217;un
+fichier XML comme par exemple registry.xml. Le code des steps est par
+convention dans un fichier exportimport.py</p>
+</dd>
+</dl>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="browserview.html">Comment réaliser une vue</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="browserview.html#definitions">Définitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="browserview.html#exemple">Exemple</a></li>
-</ul>
+<li><dl class="first docutils">
+<dt>(export step):</dt>
+<dd><p class="first last">Une export step est une étape dans le processus d&#8217;export qui est responsable
+de sortir un fichier XML détaillant la configuration actuelle.</p>
+</dd>
+</dl>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="test.html">Comment écrire des tests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="test.html#definitions">Définitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test.html#exemples">Exemples</a></li>
-</ul>
+<li><dl class="first docutils">
+<dt>upgrade step:</dt>
+<dd><p class="first last">Une upgrade step est une étape qui définit le passage d&#8217;une version d&#8217;un
+profile à une autre. Par convention les step sont dans le fichier upgrades.py</p>
+</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -97,15 +103,22 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="#">
+        <p class="logo"><a href="index.html">
           <img class="logo" src="_static/logo.png" alt="Logo"/>
         </a></p>
-  <h4>Sujet suivant</h4>
-  <p class="topless"><a href="install.html"
-                        title="Chapitre suivant">Installer les outils</a></p>
+  <div class="sphinxlocaltoc">
+  <h3><a href="index.html">Table des matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tout sur les profiles d&#8217;installation</a><ul>
+<li><a class="reference internal" href="#definitions">Définitions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <h3>Cette page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
+    <li><a href="_sources/profile.txt"
            rel="nofollow">Montrer la source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -133,10 +146,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="Index général"
              >index</a></li>
-        <li class="right" >
-          <a href="install.html" title="Installer les outils"
-             >suivant</a> &nbsp; &nbsp;</li>
-    <li><a href="#">Mon cook book Plone 0.1 documentation</a> &raquo;</li>
+    <li><a href="index.html">Mon cook book Plone 0.1 documentation</a> &raquo;</li>
  
       </ul>
     </div>

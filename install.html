@@ -64,6 +64,22 @@
             
   <div class="section" id="installer-les-outils">
 <h1>Installer les outils<a class="headerlink" href="#installer-les-outils" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Problème: vous souhaitez développer un module pour le CMS Plone.</p>
+<ul>
+<li><dl class="first docutils">
+<dt>prérequis 1: connaissance de base en unix/linux</dt>
+<dd><p class="first last">Vous devez être capable d&#8217;installer Python avec les sources ainsi que de
+comprendre pourquoi une installe ne compile pas.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>prérequis 2: Python</dt>
+<dd><p class="first last">Vous savez coder avec Python</p>
+</dd>
+</dl>
+</li>
+</ul>
 <div class="section" id="plone">
 <h2>Plone<a class="headerlink" href="#plone" title="Lien permanent vers ce titre">¶</a></h2>
 <p>il y a deux manières d&#8217;installer Plone:</p>
@@ -78,23 +94,57 @@ les commandes suivantes:</p>
 <div class="highlight-python"><pre>python bootstrap.py
 bin/buildout</pre>
 </div>
+<p>Vous pouvez donc passer à la suite sans avoir installé Plone.</p>
+</div>
+<div class="section" id="configurer-buildout">
+<h2>Configurer buildout<a class="headerlink" href="#configurer-buildout" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Vous devez configurer buildout pour ne pas installer Plone à chaque fois mais
+avoir un dépot central des packages sur votre machine. Pour celà vous pouvez
+récupérer dans le répo git ci après le dossier .buildout et le mettre dans le
+home de votre ordinateur</p>
+<blockquote>
+<div>cd
+git clone <a class="reference external" href="https://github.com/plone/plone.dotfiles">https://github.com/plone/plone.dotfiles</a>
+cp -R plone.dotfiles/.buildout .
+vim .buildout/default.cfg</div></blockquote>
+<p>Vous devez en effet éditer les chemins pour mettre les chemins absolus de votre
+machine.</p>
 </div>
 <div class="section" id="les-outils">
 <h2>Les outils<a class="headerlink" href="#les-outils" title="Lien permanent vers ce titre">¶</a></h2>
 <p>La bonne pratique c&#8217;est d&#8217;avoir sa boite à outil dans un dossier séparé et non
 pas demandé à chaque petit buildout d&#8217;installer tous les outils du monde.</p>
-<p>Vous avez pour cela un buildout disponible ici: <a class="reference external" href="http://github.com/toutpt/mypythontools">http://github.com/toutpt/mypythontools</a></p>
-<blockquote>
-<div>git clone <a class="reference external" href="http://github.com/toutpt/mypythontools">http://github.com/toutpt/mypythontools</a> plonetools
+<p>Vous avez pour cela un buildout disponible:</p>
+<div class="highlight-python"><pre>cd
+git clone http://github.com/toutpt/mypythontools plonetools
 cd plonetools
 python bootstrap.py
-bin/buildout</div></blockquote>
+bin/buildout
+cd</pre>
+</div>
 <p>Vous avez la dedans:</p>
 <ul class="simple">
 <li>un outil de traduction</li>
 <li>un générateur de module</li>
 <li>un générateur de thème</li>
 </ul>
+</div>
+<div class="section" id="generer-un-module">
+<h2>Générer un module<a class="headerlink" href="#generer-un-module" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Vous avez maintenant de quoi générer un module, ce que nous allons tout de
+suite faire:</p>
+<div class="highlight-python"><pre>cd
+./plonetools/bin/zopeskel toutpt_collective collective.monmodule
+cd collective.monmondule
+python boostrap.py
+bin/buildout</pre>
+</div>
+<p>La première fois c&#8217;est long car Plone est composé de nombreux packages qui sont
+téléchargés à la suite les un des autres.</p>
+<p>Vous avez maintenant un Plone mis à disposition, vous n&#8217;avez plus qu&#8217;à démarrer
+le serveur Zope</p>
+<blockquote>
+<div>bin/instance fg</div></blockquote>
 </div>
 </div>
 
@@ -112,7 +162,9 @@ bin/buildout</div></blockquote>
   <ul>
 <li><a class="reference internal" href="#">Installer les outils</a><ul>
 <li><a class="reference internal" href="#plone">Plone</a></li>
+<li><a class="reference internal" href="#configurer-buildout">Configurer buildout</a></li>
 <li><a class="reference internal" href="#les-outils">Les outils</a></li>
+<li><a class="reference internal" href="#generer-un-module">Générer un module</a></li>
 </ul>
 </li>
 </ul>
