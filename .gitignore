@@ -1,0 +1,8 @@
+.project
+.pydev-project
+#build
+.installed.cfg
+.project
+.pydevproject
+.settings
+bin
