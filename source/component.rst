@@ -55,6 +55,8 @@ Exemple: utility
 
 Cet exemple est issue du module collective.sugarcrm
 
+fichier password.py:
+
 .. code-block:: python
 
     from hashlib import md5
@@ -75,9 +77,19 @@ Cet exemple est issue du module collective.sugarcrm
             m.update(password)
             return m.hexdigest()
 
+fichier configure.zcml:
+
 .. code-block:: xml
 
     <utility
         factory=".password.Password"
         provides=".interfaces.IPasswordEncryption"
         />
+
+utilisation:
+
+.. code-block:: python
+
+    password = component.getUtility(interfaces.IPasswordEncryption)
+    crypted = password.crypt('mon mot de passe')
+
