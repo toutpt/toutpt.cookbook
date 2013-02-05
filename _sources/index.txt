@@ -12,6 +12,7 @@ Table des matières:
    :maxdepth: 2
 
    install
+   profile
    component
    browserview
    test
